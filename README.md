@@ -52,6 +52,8 @@ Episode 500	Average Score: 15.47
 Episode 600	Average Score: 16.32
 ```
 
+![alt text](Rewards.pdf)
+
 The trained model performs like this:
 
 ![](result.gif)
