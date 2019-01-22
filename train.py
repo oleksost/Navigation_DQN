@@ -6,9 +6,10 @@ from collections import deque
 import matplotlib.pyplot as plt
 
 
-parser=argparse.ArgumentParser(description='xxx')
-parser.add_argument('--total_episodes',default=600,type=int,required=False,help='(default=%(default)d)')
-parser.add_argument('--env',default='Banana_Linux_NoVis/Banana.x86',type=str,required=False,help='(default=%(default)d)')
+parser=argparse.ArgumentParser(description='Train an agent:')
+parser.add_argument('--total_episodes',default=600,type=int,required=False,help='Number of episodes to learn from')
+parser.add_argument('--env',default='Banana_Linux_NoVis/Banana.x86',type=str,required=False,help='Path to the downloaded Unity environment')
+parser.add_argument('--ddqn',default=False,type=bool,required=False,help='Whether to use the Double DQN strategy')
 opt=parser.parse_args()
 
 
@@ -34,7 +35,7 @@ print('States look like:', state)
 state_size = len(state)
 print('States have length:', state_size)
 Agent = agent.Agent
-agent_ = Agent(state_size=state_size, action_size=action_size, seed=0, total_episodes=opt.total_episodes)
+agent_ = Agent(state_size=state_size, action_size=action_size, seed=0, total_episodes=opt.total_episodes, ddqn=opt.ddqn)
 
 def dqn(n_episodes=opt.total_episodes, max_t=1000, eps_start=1.0, eps_end=0.001, eps_decay=0.95):
     """Deep Q-Learning.

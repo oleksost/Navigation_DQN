@@ -4,12 +4,11 @@ import agent
 import argparse
 import torch
 from collections import deque
-import matplotlib.pyplot as plt
 
 
-parser=argparse.ArgumentParser(description='xxx')
-parser.add_argument('--total_episodes',default=600,type=int,required=False,help='(default=%(default)d)')
-parser.add_argument('--env',default='Banana_Linux_NoVis/Banana.x86',type=str,required=False,help='(default=%(default)d)')
+parser=argparse.ArgumentParser(description='Test a pretrained agent:')
+parser.add_argument('--env',default='Banana.app',type=str,required=False,help='Path to the downloaded Unity environment')
+parser.add_argument('--model_pth',default='checkpoint_2_banana.pth',type=str,required=False,help='Path to the trained model')
 opt=parser.parse_args()
 
 
@@ -35,10 +34,10 @@ print('States look like:', state)
 state_size = len(state)
 print('States have length:', state_size)
 Agent = agent.Agent
-agent_ = Agent(state_size=state_size, action_size=action_size, seed=0, total_episodes=opt.total_episodes)
+agent_ = Agent(state_size=state_size, action_size=action_size, seed=0)
 
 
-agent_.qnetwork_local.load_state_dict(torch.load('checkpoint_banana.pth'))
+agent_.qnetwork_local.load_state_dict(torch.load(opt.model_pth))
 env_info = env.reset(train_mode=False)[brain_name]  # reset the environment
 state = env_info.vector_observations[0]  # get the current state
 score = 0  # initialize the score
