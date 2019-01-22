@@ -24,7 +24,7 @@ enhanced using the following two strategies was used:
  - Prioretized Experiance Replay strategy (Schaul et al., 2015), and
  - Dueling Networks (Wang et al., 2015).
  
-The code also includes an implementation of the Double DQN strategy, however, applying it did not result in notable performance gain.   
+The code also includes an implementation of the Double DQN (Van Hasselt et al., 2016) strategy, however, applying it did not result in notable performance gain.   
 
 ##### 2. Architecture.
 
@@ -128,3 +128,5 @@ Schaul, T., Quan, J., Antonoglou, I., & Silver, D. (2015). Prioritized experienc
 Mnih, V., Kavukcuoglu, K., Silver, D., Rusu, A. A., Veness, J., Bellemare, M. G., ... & Petersen, S. (2015). Human-level control through deep reinforcement learning. Nature, 518(7540), 529.
 
 Wang, Z., Schaul, T., Hessel, M., Van Hasselt, H., Lanctot, M., & De Freitas, N. (2015). Dueling network architectures for deep reinforcement learning. arXiv preprint arXiv:1511.06581.
+
+Van Hasselt, H., Guez, A., & Silver, D. (2016, February). Deep Reinforcement Learning with Double Q-Learning. In AAAI (Vol. 2, p. 5).
