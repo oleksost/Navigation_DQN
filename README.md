@@ -24,7 +24,7 @@ enhanced using the following two strategies was used:
  - Prioretized Experiance Replay strategy (Schaul et al., 2015), and
  - Dueling Networks (Wang et al., 2015).
  
-The code also includes an implementation of the Double DQN (Van Hasselt et al., 2016) strategy, however, applying it did not result in notable performance gain.   
+The code also includes an implementation of the Double DQN (Van Hasselt et al., 2016) strategy, however, applying it did not result in any notable performance gain.   
 
 ##### 2. Architecture.
 
