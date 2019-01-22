@@ -14,6 +14,9 @@ GAMMA = 0.99  # discount factor
 TAU = 1e-3  # for soft update of target parameters
 LR = 4e-5  # learning rate
 UPDATE_EVERY = 2  # how often to update the network
+BETA_START = 0.2  #
+PROB_ALPHA = 0.8  # controll the threshold of using priorities or randomness
+
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
@@ -145,11 +148,9 @@ class PrioritizedReplayMemory:
             seed (int): random seed
         """
 
-        self.beta_start = 0.2
+
         self.total_episodes = total_episodes
         self.frame = 1
-        self.prob_alpha = 0.8  # controll the threshold of using priorities or randomness
-
         self.action_size = action_size
         self.buffer_size = buffer_size
         self.memory = deque(maxlen=buffer_size)
@@ -166,7 +167,7 @@ class PrioritizedReplayMemory:
         self.memory.append(e)
 
     def unneal_beta(self, frame_idx):
-        #return min(1.0, self.beta_start + frame_idx * (1.0 - self.beta_start) / self.beta_frames)
+        #return min(1.0, BETA_START + frame_idx * (1.0 - BETA_START) / self.beta_frames)
 
         return  frame_idx / self.total_episodes
 
@@ -201,7 +202,7 @@ class PrioritizedReplayMemory:
 
     def update_priorities(self, batch_indices, batch_priorities):
         for idx, prio in zip(batch_indices, batch_priorities):
-            self.priorities[idx] = (prio[0] + 1e-5) ** self.prob_alpha
+            self.priorities[idx] = (prio[0] + 1e-5) ** PROB_ALPHA
 
     def __len__(self):
         """Return the current size of internal memory."""

@@ -88,6 +88,8 @@ Main hyperparameters of the learning algorithm can be found in *agent.py*, these
 - GAMMA - discount factor
 - LR - learning rate
 - UPDATE_EVERY - how often to update the target network
+- BETA_START - exponent of the bias correction term caused by prioritized experience replay
+- PROB_ALPHA - the threshold of using experience replay priorities or randomness
 
 
 #### Instructions
